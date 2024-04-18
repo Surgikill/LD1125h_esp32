@@ -1,0 +1,3 @@
+board: nodemcu-32s
+framework:
+  type: esp-idf  #Suggest Use ESP-IDF Framework, or Plug Out the UART Cable Might Cause ESP32 Hang. 

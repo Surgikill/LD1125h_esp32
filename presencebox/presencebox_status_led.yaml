@@ -1,0 +1,3 @@
+pin:
+  number: GPIO2 #ESP32 Onboardd LED
+  inverted: false

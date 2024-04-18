@@ -1,0 +1,4 @@
+- source:
+    type: git
+    url: https://github.com/ssieb/custom_components #Thanks for @ssieb components.
+  components: [ serial ]

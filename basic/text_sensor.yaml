@@ -1,0 +1,12 @@
+- platform: version
+  name: ESPHome Version
+  id: esphome_version
+  hide_timestamp: True
+
+- platform: wifi_info
+  ip_address:
+    name: IP Address
+    id: ip_address
+  mac_address:
+    name: Mac
+    id: mac_address

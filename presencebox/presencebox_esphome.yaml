@@ -1,0 +1,29 @@
+name: $devicename
+friendly_name: ${friendlyname}
+on_boot:    #LD1125H Initial Setting
+  priority: -200
+  then:
+    - delay: 100ms
+    - uart.write:
+        id: LD1125H_UART_BUS
+        data: !lambda |-
+          std::string th1st = "mth1=" + str_sprintf("%.0f",id(LD1125H_mth1).state) +"\r\n";
+          return std::vector<uint8_t>(th1st.begin(), th1st.end());
+    - delay: 100ms
+    - uart.write:
+        id: LD1125H_UART_BUS
+        data: !lambda |-
+          std::string th2st = "mth2=" + str_sprintf("%.0f",id(LD1125H_mth2).state) +"\r\n";
+          return std::vector<uint8_t>(th2st.begin(), th2st.end());
+    - delay: 100ms
+    - uart.write:
+        id: LD1125H_UART_BUS
+        data: !lambda |-
+          std::string th3st = "mth3=" + str_sprintf("%.0f",id(LD1125H_mth3).state) +"\r\n";
+          return std::vector<uint8_t>(th3st.begin(), th3st.end());
+    - delay: 100ms
+    - uart.write:
+        id: LD1125H_UART_BUS
+        data: !lambda |-
+          std::string rmaxst = "rmax=" + str_sprintf("%.1f",id(LD1125H_rmax).state) +"\r\n";
+          return std::vector<uint8_t>(rmaxst.begin(), rmaxst.end());

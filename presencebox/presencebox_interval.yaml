@@ -1,0 +1,16 @@
+- interval: 1s #Clearance Scan Time
+  setup_priority: -200
+  then:
+    lambda: |-
+      if ((time(NULL)-id(LD1125H_Last_Time))>id(LD1125H_Clear_Time).state) {
+        if ((id(LD1125H_Clearence_Status) == false) || (id(LD1125H_Occupancy).state != "Clearance")) {
+          id(LD1125H_Occupancy).publish_state("Clearance");
+          id(LD1125H_Clearence_Status) = true;
+        }
+        if (id(LD1125H_MovOcc_Binary).state == true) {
+          id(LD1125H_MovOcc_Binary).publish_state(false);
+        }
+        if (id(LD1125H_Mov_Binary).state == true) {
+          id(LD1125H_Mov_Binary).publish_state(false);
+        }
+      }

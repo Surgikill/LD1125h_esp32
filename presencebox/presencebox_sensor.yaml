@@ -1,0 +1,22 @@
+- platform: uptime
+  name: Uptime
+
+- platform: wifi_signal
+  name: WiFi Signal
+
+- platform: template
+  name: Distance
+  id: LD1125H_Distance
+  icon: "mdi:signal-distance-variant"
+  unit_of_measurement: "m"
+  accuracy_decimals: 2
+  filters:    # Use Fliter To Debounce
+  - sliding_window_moving_average:
+      window_size: 8
+      send_every: 2
+  - heartbeat: 0.2s
+
+- platform: bh1750
+  name: Lux
+  address: 0x23
+  update_interval: 60s

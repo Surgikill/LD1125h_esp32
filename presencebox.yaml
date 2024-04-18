@@ -1,0 +1,67 @@
+substitutions:
+  devicename: "presencebox"
+  friendlyname: "Presencebox"
+  update_time: 30s
+
+#Basic Config
+###############################################################
+
+wifi:
+  !include configs/basic/wifi.yaml
+
+api:
+  !include configs/basic/api.yaml
+
+ota:
+  !include configs/basic/ota.yaml
+
+#web_server: #Avoid Using Web Server To Prevent Hang
+#  !include configs/basic/web_server.yaml
+
+logger:
+  !include configs/basic/logger.yaml
+
+button:
+  !include configs/basic/button.yaml
+
+#Device Specific Config
+###############################################################
+
+esphome:
+  !include configs/presencebox/presencebox_esphome.yaml
+
+i2c:
+  !include configs/presencebox/presencebox_i2c.yaml
+
+esp32:
+  !include configs/presencebox/presencebox_esp32.yaml
+
+external_components:
+  !include configs/presencebox/presencebox_external_components.yaml
+
+uart:
+  !include configs/presencebox/presencebox_uart.yaml
+
+globals:
+  !include configs/presencebox/presencebox_globals.yaml
+
+status_led:
+  !include configs/presencebox/presencebox_status_led.yaml
+
+interval:
+  !include configs/presencebox/presencebox_interval.yaml
+
+number:
+  !include configs/presencebox/presencebox_number.yaml
+
+light:
+  !include configs/presencebox/presencebox_light.yaml
+
+sensor:
+  !include configs/presencebox/presencebox_sensor.yaml
+
+binary_sensor:
+  !include configs/presencebox/presencebox_binary_sensor.yaml
+
+text_sensor:
+  !include configs/presencebox/presencebox_text_sensor.yaml

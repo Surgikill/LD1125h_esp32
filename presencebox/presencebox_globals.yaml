@@ -1,0 +1,14 @@
+- id: LD1125H_Last_Time
+  type: time_t
+  restore_value: no
+  initial_value: time(NULL)
+
+- id: LD1125H_Last_Mov_Time
+  type: time_t
+  restore_value: no
+  initial_value: time(NULL)
+
+- id: LD1125H_Clearence_Status
+  type: bool
+  restore_value: no
+  initial_value: "false"

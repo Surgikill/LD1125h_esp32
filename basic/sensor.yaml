@@ -1,0 +1,5 @@
+- platform: uptime
+  name: Uptime
+
+- platform: wifi_signal
+  name: WiFi Signal

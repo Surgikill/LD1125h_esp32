@@ -1,0 +1,60 @@
+- platform: serial
+  uart_id: LD1125H_UART_BUS
+  name: LD1125H UART Text
+  id: LD1125H_UART_Text
+  icon: "mdi:format-text"
+  internal: True #If Don't Want to See UART Receive Data, Set To True
+  on_value:
+    lambda: |-
+      if (id(LD1125H_UART_Text).state.substr(0,3) == "occ") {
+        id(LD1125H_Distance).publish_state(atof(id(LD1125H_UART_Text).state.substr(9).c_str()));
+        if ((time(NULL)-id(LD1125H_Last_Mov_Time))>id(LD1125H_Mov_Time).state) {
+          id(LD1125H_Occupancy).publish_state("Occupancy");
+          if (id(LD1125H_MovOcc_Binary).state == false) {
+            id(LD1125H_MovOcc_Binary).publish_state(true);
+          }
+          if (id(LD1125H_Mov_Binary).state == true) {
+            id(LD1125H_Mov_Binary).publish_state(false);
+          }
+        }
+        if (id(LD1125H_MovOcc_Binary).state == false) {
+          id(LD1125H_MovOcc_Binary).publish_state(true);
+        }
+        id(LD1125H_Last_Time) = time(NULL);
+        if (id(LD1125H_Clearence_Status) == true) {
+          id(LD1125H_Clearence_Status) = false;
+        }
+      }
+      else if (id(LD1125H_UART_Text).state.substr(0,3) == "mov") {
+        id(LD1125H_Distance).publish_state(atof(id(LD1125H_UART_Text).state.substr(9).c_str()));
+        id(LD1125H_Occupancy).publish_state("Movement");
+        if (id(LD1125H_MovOcc_Binary).state == false) {
+          id(LD1125H_MovOcc_Binary).publish_state(true);
+        }
+        if (id(LD1125H_Mov_Binary).state == false) {
+          id(LD1125H_Mov_Binary).publish_state(true);
+        }
+        id(LD1125H_Last_Mov_Time) = time(NULL);
+        id(LD1125H_Last_Time) = time(NULL);
+        if (id(LD1125H_Clearence_Status) == true) {
+          id(LD1125H_Clearence_Status) = false;
+        }
+      }
+
+- platform: template
+  name: Occupancy Status
+  id: LD1125H_Occupancy
+  icon: "mdi:account-question"
+
+- platform: version
+  name: ESPHome Version
+  id: esphome_version
+  hide_timestamp: True
+
+- platform: wifi_info
+  ip_address:
+    name: IP Address
+    id: ip_address
+  mac_address:
+    name: Mac
+    id: mac_address

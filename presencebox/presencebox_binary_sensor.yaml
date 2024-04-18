@@ -1,0 +1,12 @@
+- platform: status
+  name: Status
+
+- platform: template
+  name: Occupancy or Movement
+  id: LD1125H_MovOcc_Binary
+  device_class: occupancy
+
+- platform: template
+  name: Movement
+  id: LD1125H_Mov_Binary
+  device_class: motion  
