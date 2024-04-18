@@ -71,12 +71,12 @@
             return std::vector<uint8_t>(rmaxst.begin(), rmaxst.end());
 
 - platform: template
-  name: Clearence (s)
+  name: Clearance (s)
   id: LD1125H_Clear_Time
   icon: "mdi:account-off"
   optimistic: true
   restore_value: true #If you don't want to store the setting at ESP, set it to false.
-  initial_value: "5" #LD1125H Mov/Occ > Clearence Time Here
+  initial_value: "5" #LD1125H Mov/Occ > Clearance Time Here
   min_value: 0.5
   max_value: 20
   step: 0.5
